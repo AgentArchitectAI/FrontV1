@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -42,11 +43,13 @@ const Home = () => {
         </h1>
 
         <div className="flex justify-center sm:justify-start">
-          <button
-            className="bg-[#78786d] hover:bg-[#5e5e5e] active:scale-95 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg shadow-lg transition-all duration-300 ease-in-out"
-          >
-            Iniciar con el agente
-          </button>
+          <Link to="/homepage2">
+            <button
+              className="bg-[#78786d] hover:bg-[#5e5e5e] active:scale-95 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg shadow-lg transition-all duration-300 ease-in-out"
+            >
+Beginnen Sie mit dem Agenten
+            </button>
+          </Link>
         </div>
       </div>
     </div>
