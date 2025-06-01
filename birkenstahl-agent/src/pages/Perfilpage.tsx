@@ -1,9 +1,17 @@
-import React from "react";
 import Header2 from "../components/Header2";
-
-
+import { useUser } from "../hooks/useUser";
+import { logout } from "../lib/auth";
+import { useNavigate } from "react-router-dom";
 
 const PerfilPage = () => {
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
   return (
     <div
       className="relative flex min-h-screen flex-col bg-[#202222] overflow-x-hidden text-white"
@@ -17,14 +25,14 @@ const PerfilPage = () => {
             <div className="flex items-center gap-6 p-4 flex-wrap">
               <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#78786d]">
                 <img
-                  src="/assets/avatar-placeholder.png"
+                  src={user?.photo || "/assets/avatar-placeholder.png"}
                   alt="Foto de perfil"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div>
-                <p className="text-[#c7c7c7] text-3xl font-bold">Usuario</p>
-                <p className="text-[#aaaaaa] text-sm">correo@example.com</p>
+                <p className="text-[#c7c7c7] text-3xl font-bold">{user?.name || "Usuario"}</p>
+                <p className="text-[#aaaaaa] text-sm">{user?.email || "correo@example.com"}</p>
                 <p className="text-[#888888] text-xs mt-1">Rol: Básico</p>
               </div>
             </div>
@@ -92,12 +100,15 @@ const PerfilPage = () => {
 
             <h2 className="text-[#c7c7c7] text-xl font-bold px-4 pt-8 pb-3">Acciones</h2>
             <div className="max-w-[480px] px-4 py-3 space-y-3">
-              <button className="w-full text-left text-[#e06666] hover:underline">Cerrar sesión</button>
+              <button
+                onClick={handleLogout}
+                className="w-full text-left text-[#e06666] hover:underline"
+              >
+                Cerrar sesión
+              </button>
               <button className="w-full text-left text-[#e06666] hover:underline">Eliminar cuenta</button>
               <button className="w-full text-left text-[#aaaaaa] hover:underline">Descargar mis datos</button>
             </div>
-
-            
           </div>
         </section>
       </div>
@@ -106,4 +117,3 @@ const PerfilPage = () => {
 };
 
 export default PerfilPage;
-

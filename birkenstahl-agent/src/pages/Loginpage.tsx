@@ -1,6 +1,6 @@
-import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { loginWithGoogle, loginWithGitHub } from "../lib/auth";
 
 const LoginPage = () => {
   return (
@@ -10,15 +10,15 @@ const LoginPage = () => {
           Iniciar sesión
         </h2>
 
-        <button className="w-full py-3 px-4 flex items-center justify-center gap-3 rounded-lg bg-white text-black hover:bg-[#e0e0e0] transition duration-300 font-medium">
+        <button
+          onClick={loginWithGoogle}
+          className="w-full py-3 px-4 flex items-center justify-center gap-3 rounded-lg bg-white text-black hover:bg-[#e0e0e0] transition duration-300 font-medium"
+        >
           <FcGoogle className="w-5 h-5" />
           Continuar con Google
         </button>
 
-        <button className="w-full py-3 px-4 flex items-center justify-center gap-3 rounded-lg bg-[#333] text-white hover:bg-[#444] transition duration-300 font-medium">
-          <FaGithub className="w-5 h-5" />
-          Continuar con GitHub
-        </button>
+ 
 
         <div className="text-sm text-center text-[#aaaaaa]">
           ¿No tienes una cuenta?{" "}

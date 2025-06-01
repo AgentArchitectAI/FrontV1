@@ -37,7 +37,6 @@ const Header2 = () => {
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-[#c7c7c7] focus:outline-none"
@@ -46,7 +45,6 @@ const Header2 = () => {
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       {isOpen && (
         <div className="md:hidden mt-4 px-4 flex flex-col gap-4 text-[#c7c7c7]">
           {navItems.map(({ to, label }) => (
