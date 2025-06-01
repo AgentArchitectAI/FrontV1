@@ -10,7 +10,7 @@ import Perfilpage from './pages/Perfilpage';
 import ProjectPage from './pages/Proyectpage'; 
 import Playgroundpage from './pages/Playgroundpage';
 import AgentsPage from './pages/Agentspage';
-import PrivateRoute from './components/PrivateRoute'; // importa tu nuevo componente
+import PrivateRoute from './components/PrivateRoute'; 
 
 import './index.css';
 
