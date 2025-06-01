@@ -7,16 +7,17 @@ type User = {
   photo?: string;
 };
 
-export const useUser = (): { user: User | null } => {
+export const useUser = (): { user: User | null; loading: boolean } => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const session = await account.getSession("current");
         if (!session) return;
-
         const userData = await account.get();
+
         const name = userData.name || "Usuario";
         const email = userData.email || "correo@example.com";
         const labels = userData.labels || [];
@@ -33,11 +34,13 @@ export const useUser = (): { user: User | null } => {
         setUser({ name, email, photo: avatar });
       } catch {
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUser();
   }, []);
 
-  return { user };
+  return { user, loading };
 };
