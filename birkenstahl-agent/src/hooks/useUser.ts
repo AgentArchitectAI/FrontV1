@@ -14,7 +14,10 @@ export const useUser = () => {
     const fetchUser = async () => {
       try {
         const session = await account.getSession("current");
-        if (!session) return;
+        if (!session) {
+          setUser(null);
+          return;
+        }
   
         const userData = await account.get();
         const name = userData.name || "Usuario";
@@ -40,7 +43,4 @@ export const useUser = () => {
   
     fetchUser();
   }, []);
-  
-  return { user };
-};
-
+}  

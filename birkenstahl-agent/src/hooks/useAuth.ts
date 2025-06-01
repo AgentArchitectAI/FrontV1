@@ -6,10 +6,18 @@ export function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    account.get()
-      .then(() => setAuthenticated(true))
-      .catch(() => setAuthenticated(false))
-      .finally(() => setLoading(false));
+    const checkSession = async () => {
+      try {
+        const session = await account.getSession("current");
+        if (session) setAuthenticated(true);
+      } catch {
+        setAuthenticated(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkSession();
   }, []);
 
   return { loading, authenticated };
