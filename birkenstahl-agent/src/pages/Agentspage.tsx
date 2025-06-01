@@ -1,4 +1,3 @@
-import React from "react";
 import Header2 from "../components/Header2";
 import { HardHat, PencilRuler, LayoutTemplate } from "lucide-react";
 
