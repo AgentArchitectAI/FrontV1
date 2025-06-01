@@ -1,6 +1,5 @@
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import { loginWithGoogle, loginWithGitHub } from "../lib/auth";
+import { loginWithGoogle } from "../lib/auth";
 
 const LoginPage = () => {
   return (
