@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Header2 from "../components/Header2";
 
 type Message = {
